@@ -21,12 +21,13 @@ with st.form(key='my_form_op'):
     st.write("### Buscar Ticker")
     ticker = st.text_input("Ticker: ")
     sb_op=st.form_submit_button(label="buscar")
-
-if iol.tk:
-    if ticker:
-        try:
-            df_op = iol.opcionesDe(ticker=ticker)
-            st.dataframe(df_op)
-        except:
-            st.warning("ticker no encontrado")
-
+try:
+    if iol.tk:
+        if ticker:
+            try:
+                df_op = iol.opcionesDe(ticker=ticker)
+                st.dataframe(df_op)
+            except:
+                st.warning("ticker no encontrado")
+except:
+    pass
